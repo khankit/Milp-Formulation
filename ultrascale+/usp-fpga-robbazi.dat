@@ -1,0 +1,259 @@
+data;
+
+# the following is a description of a Robbazi Xilinx Zynq-MPSoc Ultra Scale+
+
+# --------------------- FPGA DATA --------------------------
+
+# indexes of the rows in the FPGA, each row is one tile height
+set R := 1 2 3 4 5 6 7; 
+
+# width of the FPGA in terms of tiles (minimal reconfigurable units)
+param maxW := 130;
+
+
+# height of a tile in the FPGA in terms of slice resources
+param frameH := 60;
+
+# width of a tile in terms of slice resources
+param frameW := 1;
+
+# considered resource types
+set T := SLICE DSP BRAM;
+
+# set of portions used to describe the device
+set P := por1 por2 por3 por4 por5 por6 por7 por8 por9 por10 por11 por12 por13 por14 por15 por16 por17 por18 por19 por20 por21 por22 por23 por24 por25 por26 por27 por28 por29 por30 por31 por32 por33 por34 por35 por36 por37 por38 por39 por40 por41 por42 por43 por44 por45 por46 por47 por48 por49 por50 por51 por52 por53 por54 por55 por56 por57 por58 por59 por60 por61 por62 por63 por64 por65 por66 por67;
+
+# resources contained in each tile of a portion
+param	d:		SLICE		DSP		BRAM :=		
+		por1		0		0		0
+		por2		120		0		0
+		por3		60		0		12	
+		por4		60		24		0	
+		por5		120		0		0	
+		por6		120		0		0	
+		por7		60		0		12	
+		por8		60		24		0	
+		por9		120		0		0	
+		por10		60		24		0	
+		por11		120		0		0	
+		por12		120		0		0	
+		por13		60		0		12	
+		por14		60		24		0	
+		por15		120		0		0	
+		por16		120		0		0	
+		por17		60		0		12	
+		por18		60		24		0	
+		por19		120		0		0	
+		por20		60		24		0	
+		por21		120		0		0	
+		por22		120		0		0	
+		por23		60		0		12	
+		por24		60		24		0
+		por25		120		0		0	
+		por26		120		0		0	
+		por27		60		0		12	
+		por28		60		24		0	
+		por29		120		0		0	
+		por30		60		24		0	
+		por31		120		0		0	
+		por32		120		0		0	
+		por33		60		0		12	
+		por34		60		24		0
+		por35		120		0		0	
+		por36		60		24		0	
+		por37		120		0		0	
+		por38		60		24		0	
+		por39		120		0		0	 # X2Y6
+		por40		120		0		0	
+		por41		60		0		12	
+		por42		60		24		0
+		por43		120		0		0	
+		por44		120		0		0	
+		por45		60		0		12	
+		por46		60		24		0	
+		por47		120		0		0	
+		por48		120		0		0	
+		por49		60		0		12	
+		por50		60		24		0	
+		por51		120		0		0	
+		por52		60		24		0	
+		por53		120		0		0	
+		por54		120		0		0	
+		por55		60		0		12	
+		por56		120		0		0	
+		por57		60		0		12
+		por58		0		0		0 #middle IOs
+		por59		0		0		0
+		por60		60		24		0	
+		por61		120		0		0	
+		por62		60		24		0	
+		por63		120		0		0	
+		por64		120		0		0	
+		por65		60		0		12
+		por66		0		0		0
+		por67		0		0		0 #right IOs
+;
+
+#rows occupied by each portion (1 means that a portion occupies a row, 0 otherwise)
+param	rp:		1	2	3	4	5	6	7:=
+		por1	0	0	0	0	0	0	0
+		por2	1	1	1	1	0	0	0
+		por3	1	1	1	1	0	0	0
+		por4	1	1	1	1	0	0	0
+		por5	1	1	1	1	0	0	0
+		por6	1	1	1	1	0	0	0
+		por7	1	1	1	1	0	0	0
+		por8	1	1	1	1	0	0	0
+		por9	1	1	1	1	0	0	0
+		por10	1	1	1	1	0	0	0
+		por11	1	1	1	1	0	0	0
+		por12	1	1	1	1	0	0	0
+		por13	1	1	1	1	0	0	0
+		por14	1	1	1	1	0	0	0
+		por15	1	1	1	1	0	0	0
+		por16	1	1	1	1	0	0	0
+		por17	1	1	1	1	0	0	0
+		por18	1	1	1	1	0	0	0
+		por19	1	1	1	1	0	0	0
+		por20	1	1	1	1	0	0	0
+		por21	1	1	1	1	0	0	0
+		por22	1	1	1	1	0	0	0
+		por23	1	1	1	1	0	0	0
+		por24	1	1	1	1	0	0	0
+		por25	1	1	1	1	0	0	0
+		por26	1	1	1	1	1	1	1
+		por27	1	1	1	1	1	1	1
+		por28	1	1	1	1	1	1	1
+		por29	1	1	1	1	1	1	1
+		por30	1	1	1	1	1	1	1
+		por31	1	1	1	1	1	1	1
+		por32	1	1	1	1	1	1	1
+		por33	1	1	1	1	1	1	1
+		por34	1	1	1	1	1	1	1
+		por35	1	1	1	1	1	1	1
+		por36	1	1	1	1	1	1	1
+		por37	1	1	1	1	1	1	1
+		por38	1	1	1	1	1	1	1
+		por39	1	1	1	1	1	1	1
+		por40	1	1	1	1	1	1	1
+		por41	1	1	1	1	1	1	1
+		por42	1	1	1	1	1	1	1
+		por43	1	1	1	1	1	1	1
+		por44	1	1	1	1	1	1	1
+		por45	1	1	1	1	1	1	1
+		por46	1	1	1	1	1	1	1
+		por47	1	1	1	1	1	1	1
+		por48	1	1	1	1	1	1	1
+		por49	1	1	1	1	1	1	1
+		por50	1	1	1	1	1	1	1
+		por51	1	1	1	1	1	1	1
+		por52	1	1	1	1	1	1	1
+		por53	1	1	1	1	1	1	1
+		por54	1	1	1	1	1	1	1
+		por55	1	1	1	1	1	1	1
+		por56	1	1	1	1	1	1	1
+		por57	1	1	1	1	1	1	1
+		por58	0	0	0	0	0	0	0
+		por59	0	0	0	0	0	0	0
+		por60	1	1	1	1	1	1	1
+		por61	1	1	1	1	1	1	1
+		por62	1	1	1	1	1	1	1
+		por63	1	1	1	1	1	1	1
+		por64	1	1	1	1	1	1	1
+		por65	1	1	1	1	1	1	1
+		por66	0	0	0	0	0	0	0
+		por67	0	0	0	0	0	0	0
+;	
+
+#coordinates of the portions on the x axis
+param:			x1		x2 :=
+		por1	0	0
+		por2	1	1
+		por3	2	2
+		por4	3	3
+		por5	4	4
+		por6	5	5
+		por7	6	6
+		por8	7	7
+		por9	8	8
+		por10	9	9
+		por11	10	10
+		por12	11	11
+		por13	12	12
+		por14	13	13
+		por15	14	14
+		por16	15	15
+		por17	16	16
+		por18	17	17
+		por19	18	18
+		por20	19	19
+		por21	20	20
+		por22	21	21
+		por23	22	22
+		por24	23	23
+		por25	24	24
+		por26	25	25
+		por27	26	26
+		por28	27	27
+		por29	28	28
+		por30	29	29
+		por31	30	30
+		por32	31	31
+		por33	32	32
+		por34	33	33
+		por35	34	34
+		por36	35	35
+		por37	36	36
+		por38	37	37
+		por39	38	38
+		por40	39	39
+		por41	40	40
+		por42	41	41
+		por43	42	42
+		por44	43	43
+		por45	44	44
+		por46	45	45
+		por47	46	46
+		por48	47	47
+		por49	48	48
+		por50	49	49
+		por51	50	50
+		por52	51	51
+		por53	52	52
+		por54	53	53
+		por55	54	54
+		por56	55	55
+		por57	56	56
+		por58	57	57
+		por59	58	58	##io
+		por60	59	59
+		por61	60	60
+		por62	61	61
+		por63	62	62
+		por64	63	63
+		por65	64	64
+		por66	65	65
+		por67	66	66
+;
+
+
+# ----------------- OBJECTIVE FUNCTION PARAMETERS ---------------------
+
+
+# weight of the communication cost
+param qWL := 0;
+
+# weight of the resources wasted cost
+param qR := 1;
+
+# weight of the perimeter cost
+param qP := 0;
+
+# cost for westing a resource of a specific type
+param: rct :=
+	SLICE	1
+	DSP		1
+	BRAM	1
+;
+
+end;

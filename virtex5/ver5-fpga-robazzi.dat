@@ -1,0 +1,109 @@
+data;
+
+# --------------------- FPGA DATA --------------------------
+
+# the following is a description of a Robbazi Virtex-5-XC5VLX110T
+
+# indexes of the rows in the FPGA
+# each row is one reconfigurable frame height
+set R := 1 2 3 4 5 6 7 8; 
+
+# width of the FPGA in terms of reconfigurable frames
+param maxW := 61;
+
+# height of a reconfigurable frame in the FPGA
+param frameH := 20;
+
+# width of a reconfigurable frame in terms of slice resources
+param frameW := 2;
+
+# resource types
+set T := SLICE DSP BRAM;
+
+# resource portions
+set P := por1 por2 por3 por4 por5 por6 por7 por8 por9 por10 por11 por12 por13 por14 por15 por16;
+
+#portion resource types density for reconfigurable frame
+param	d:		SLICE		DSP		BRAM :=
+		por1		0		0		0	#left IO
+		por2		40		0		0
+		por3		0		0		4
+		por4		40		0		0
+		por5		0		0		4
+		por6		40		0		0
+		por7		0		8		0
+		por8		40		0		0
+		por9		0		0		0	#center IO
+		por10		40		0		0
+		por11		0		0		4
+		por12		40		0		0
+		por13		0		0		4
+		por14		40		0		0
+		por15		0		0		0
+		por16		40		0		0
+		
+										#right IO
+;
+
+#rows occupied by each portion (1 means that a portion crosses a row, 0 otherwise)
+param	rp:		1	2	3	4	5	6	7	8 :=
+		por1	1	1	1	1	1	1	1	1
+		por2	1	1	1	1	1	1	1	1
+		por3	1	1	1	1	1	1	1	1
+		por4	1	1	1	1	1	1	1	1
+		por5	1	1	1	1	1	1	1	1
+		por6	1	1	1	1	1	1	1	1
+		por7	1	1	1	1	1	1	1	1
+		por8	1	1	1	1	1	1	1	1
+		por9	1	1	1	1	1	1	1	1
+		por10	1	1	1	1	1	1	1	1
+		por11	1	1	1	1	1	1	1	1
+		por12	1	1	1	1	1	1	1	1
+		por13	1	1	1	1	1	1	1	1
+		por14	1	1	1	1	1	1	1	1
+		por15	1	1	1	1	1	1	1	1
+		por16	1	1	1	1	1	1	1	1
+;
+
+#coordinates of the portions on the x axis
+param:			x1		x2 :=
+		por1	0		0	#left IO
+		por2	1		4
+		por3	5		5
+		por4	6		15
+		por5	16		16
+		por6	17		18
+		por7	19		19
+		por8	20		27
+		por9	28		28	#center IO
+		por10	29		40
+		por11	41		41
+		por12	42		51
+		por13	52		52
+		por14	53		56
+		por15	57		57
+		por16	58		61
+
+							#right IO //62
+;
+
+# ----------------- OBJECTIVE FUNCTION PARAMETERS ---------------------
+
+
+# weight of the communication cost
+param qWL := 0;
+
+# weight of the resources wasted cost
+param qR := 1;
+
+# weight of the perimeter cost
+param qP := 0;
+
+# cost for westing a resource of a specific type
+param: rct :=
+	SLICE	1
+	DSP		1
+	BRAM	1
+;
+
+end;

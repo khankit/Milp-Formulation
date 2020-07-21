@@ -1,0 +1,51 @@
+data;
+set N := rec12 rec6 rec3 rec15 rec7 rec4 rec5 rec9 rec8 rec13 rec1 rec11 rec10 rec2 rec14;
+
+param: pair1Regions: pair1 :=
+;
+param: pair2Regions: pair2 :=
+;
+param	c:		SLICE		BRAM	DSP :=
+		rec12	560	0	0
+		rec6	1000	0	0
+		rec3	1000	8	16
+		rec15	160	0	0
+		rec7	440	0	0
+		rec4	840	8	0
+		rec5	1120	8	0
+		rec9	1120	0	0
+		rec8	1280	0	0
+		rec13	1280	0	0
+		rec1	1120	4	0
+		rec11	440	0	0
+		rec10	280	0	0
+		rec2	720	4	0
+		rec14	840	0	0
+;
+param comm default 0:=
+		rec1	rec5	21
+		rec1	rec12	25
+		rec2	rec8	36
+		rec3	rec7	38
+		rec4	rec12	37
+		rec4	rec13	31
+		rec5	rec4	7
+		rec5	rec12	37
+		rec9	rec2	15
+		rec10	rec7	14
+		rec12	rec5	17
+		rec12	rec6	36
+		rec13	rec14	26
+		rec15	rec2	40
+;
+param:	IO:		ioX		ioY		ioWires :=
+	1	rec12	0.5	5.5	25
+	2	rec6	57.5	4.5	17
+	3	rec3	57.5	1.5	37
+	4	rec15	57.5	2.5	6
+	5	rec15	0.5	3.5	38
+	6	rec7	28.5	1.5	29
+	7	rec4	28.5	0.5	36
+	8	rec4	28.5	4.5	39
+;
+end;
